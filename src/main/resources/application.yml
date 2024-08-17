@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: rag-pgvector-db
+  datasource:
+    url: jdbc:postgresql://localhost5432/sbdocs
+    username: ig
+    password: password
+  ai:
+    ollama:
+      chat:
+        model: llama3.1
+      embedding:
+        options:
+          model: nomic-embed-text
+    vectorstore:
+      pgvector:
+        index-type: hnsw
+        distance-type: COSINE_DISTANCE
+        dimensions: 768
+        #dimensions: 4096
+  docker:
+    compose:
+      lifecycle-management: start_only
+  main:
+    banner-mode: off
+
+#logging:
+#  level:
+#    root: off
